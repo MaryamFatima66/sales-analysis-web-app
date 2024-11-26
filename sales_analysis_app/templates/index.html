@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>Sales Analysis</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Sales Analysis Web Application</h1>
+        <form id="sales-form">
+            <input type="text" id="product_id" placeholder="Product ID" required>
+            <input type="text" id="product_name" placeholder="Product Name" required>
+            <select id="category">
+                <option value="Electronics">Electronics</option>
+                <option value="Home & Garden">Home & Garden</option>
+                <option value="Toys">Toys</option>
+            </select>
+            <input type="number" id="sales_amount" placeholder="Sales Amount ($)" required>
+            <input type="number" id="units_sold" placeholder="Units Sold" required>
+            <select id="region">
+                <option value="North">North</option>
+                <option value="South">South</option>
+                <option value="East">East</option>
+                <option value="West">West</option>
+            </select>
+            <input type="number" id="customer_age" placeholder="Customer Age" required>
+            <button type="button" id="submit-btn">Submit</button>
+        </form>
+
+        <div id="stats">
+            <h2>Statistics</h2>
+            <div id="stats-content">
+                <p>Mean Sales: {{ stats.sales_mean }}</p>
+                <p>Median Sales: {{ stats.sales_median }}</p>
+                <p>Sales Std Dev: {{ stats.sales_std }}</p>
+                <p>Mean Units Sold: {{ stats.units_mean }}</p>
+                <p>Mean Customer Age: {{ stats.age_mean }}</p>
+            </div>
+        </div>
+
+        <div id="chart">
+            <h2>Visualization</h2>
+            {% if chart_img %}
+                <img src="data:image/png;base64,{{ chart_img }}" alt="Chart">
+            {% else %}
+                <p>No chart available</p>
+            {% endif %}
+        </div>
+    </div>
+    <script src="/static/scripts.js"></script>
+</body>
+</html>
